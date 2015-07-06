@@ -31,8 +31,7 @@ func main() {
 	request := Request{url: ""}
 	_, err := request.Submit()
 	if err != nil {
-		fmt.Println("1st request Successful")
-		return
+		fmt.Println("1st Request Successfull")
 	}
 	fmt.Println("1st Request", err)
 
@@ -40,7 +39,6 @@ func main() {
 	_, err2 := request2.Submit()
 	if err != nil {
 		fmt.Println("2nd request Successful")
-		return
 	}
 	fmt.Println("2nd Request", err2)
 }
