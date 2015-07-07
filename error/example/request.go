@@ -17,28 +17,27 @@ func (r Request) malformed() bool {
 }
 
 func (r Request) Submit() (string, error) {
-	customError := new(requesterror.CustomUserError)
 	if r.url == "" {
-		return "", customError.InvalidRequest()
+		return "", requesterror.InvalidRequest()
 	} else if r.malformed() {
-		return "", customError.MalformedRequest()
+		return "", requesterror.MalformedRequest()
 	} else {
-		return "Request Successfull", nil
+		return "Request Successful", nil
 	}
 }
 
 func main() {
+	// Request 1
 	request := Request{url: ""}
 	_, err := request.Submit()
 	if err != nil {
-		fmt.Println("1st Request Successfull")
+		fmt.Println("1st Request Error:", err)
 	}
-	fmt.Println("1st Request", err)
 
+	// Request 2
 	request2 := Request{url: "i/am/malformed"}
 	_, err2 := request2.Submit()
 	if err != nil {
-		fmt.Println("2nd request Successful")
+		fmt.Println("2nd Request Error:", err2)
 	}
-	fmt.Println("2nd Request", err2)
 }

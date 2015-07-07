@@ -11,7 +11,7 @@ type MyScrewedUpError struct {
 
 // MyScrewedUpError implements the builtin error interface
 func (error MyScrewedUpError) Error() string {
-	return "My Awesome custom error" + error.errorMessage
+	return fmt.Sprintf("My Awesome custom error (%q)", error.errorMessage)
 }
 
 func main() {
